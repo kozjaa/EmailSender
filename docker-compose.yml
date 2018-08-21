@@ -1,0 +1,20 @@
+version: '3'
+
+services:
+  application:
+    image: message
+    networks:
+      - spring
+    ports:
+      - "8080:8080"
+    links:
+      - cassandra
+  cassandra:
+      image: cassandra
+      networks:
+        - spring
+      ports:
+        - "9042:9042"
+
+networks:
+  spring:
